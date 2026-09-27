@@ -13,6 +13,7 @@ const loginForm = ref({ username: 'calibrator', password: 'calib123456' })
 
 const isHome = computed(() => route.path === '/')
 const isDetail = computed(() => route.path.startsWith('/jobs/'))
+const isBanWindow = computed(() => route.path === '/ban-window')
 
 async function login() {
   err.value = ''
@@ -51,6 +52,8 @@ function logout() {
       <div class="brand">光谱波长校准台</div>
       <nav class="nav">
         <router-link to="/" :class="{ active: isHome }">校准总览</router-link>
+        <span class="nav-sep">|</span>
+        <router-link to="/ban-window" :class="{ active: isBanWindow }">钟点闸</router-link>
         <span class="nav-sep">|</span>
         <span
           class="nav-hint"
